@@ -1,7 +1,7 @@
 ## DB設計
 ### users テーブル（ユーザー情報）
 | Column          | Type   | Options                   |
-|---------------  |--------|-------------------------- |
+|---------------- |--------|-------------------------- |
 | nickname        | string | null: false               |
 | email           | string | null: false, unique: true |
 | password        | string | null: false               |
@@ -13,8 +13,8 @@
 
 ### Association
 
-* has_many :items, dependent: :destroy
-* has_many :orders, dependent: :destroy
+* has_many :items
+* has_many :orders
 
 
 ### items テーブル（商品情報）
@@ -28,7 +28,7 @@
 | prefecture_id    | integer    | null: false                    |
 | shipping_days_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -39,22 +39,22 @@
 ### orders テーブル（購入履歴）
 | Column  | Type       | Options                        |
 |-------- |----------- |------------------------------- |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 * belongs_to :user
 * belongs_to :item
-* has_one :shipping_address, dependent: :destroy
+* has_one :shipping_address
 
 
 ### shipping_addresses テーブル（発送先）
 | Column        | Type       | Options                        |
 |-------------- |----------- |------------------------------- |
-| order_id      | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 | postal_code   | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building_name | string     | foreign_key: true              |
