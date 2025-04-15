@@ -1,15 +1,15 @@
 ## DB設計
 ### users テーブル（ユーザー情報）
-| Column          | Type   | Options                   |
-|---------------- |--------|-------------------------- |
-| nickname        | string | null: false               |
-| email           | string | null: false, unique: true |
-| password        | string | null: false               |
-| first_name      | string | null: false               |
-| last_name       | string | null: false               |
-| first_name_kana | string | null: false               |
-| last_name_kana  | string | null: false               |
-| birth_date      | date   | null: false               |
+| Column             | Type   | Options                   |
+|------------------- |--------|-------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birth_date         | date   | null: false               |
 
 ### Association
 
@@ -26,7 +26,7 @@
 | condition_id     | integer    | null: false                    |
 | shipping_fee_id  | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
-| shipping_days_id | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
