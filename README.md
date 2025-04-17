@@ -20,15 +20,15 @@
 ### items テーブル（商品情報）
 | Column           | Type       | Options                        |
 |----------------- |----------- |------------------------------- |
-| items_name       | string     | null: false                    |
-| description      | text       | null: false                    |
-| category_id      | integer    | null: false                    |
-| condition_id     | integer    | null: false                    |
-| shipping_fee_id  | integer    | null: false                    |
-| prefecture_id    | integer    | null: false                    |
-| shipping_day_id  | integer    | null: false                    |
-| price            | integer    | null: false                    |
-| user             | references | null: false, foreign_key: true |
+  | items_name       | string     | null: false                    |
+  | description      | text       | null: false                    |
+  | category_id      | integer    | null: false                    |
+  | condition_id     | integer    | null: false                    |
+  | shipping_fee_id  | integer    | null: false                    |
+  | prefecture_id    | integer    | null: false                    |
+  | shipping_day_id  | integer    | null: false                    |
+  | price            | integer    | null: false                    |
+  | user             | references | null: false, foreign_key: true |
 
 ### Association
 
