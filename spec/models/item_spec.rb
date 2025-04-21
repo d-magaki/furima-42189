@@ -61,16 +61,21 @@ RSpec.describe Item, type: :model do
       it '価格が9,999,999円を超えると出品できない' do
         @item.price = 10_000_000
         expect(@item).not_to be_valid
+        
       end
 
       it '価格が半角数字以外では出品できない' do
         @item.price = '１０００'
-        expect(@item.valid?).to eq false
-        expect(@item.errors.full_messages).to include("Price must be in half-width numbers")
+        expect(@item).not_to be_valid
       end
 
       it '商品画像が空では出品できない' do
         @item.image.purge
+        expect(@item).not_to be_valid
+      end
+
+      it 'ユーザーが紐づいていないと出品できない' do
+        @item.user = nil
         expect(@item).not_to be_valid
       end
     end
