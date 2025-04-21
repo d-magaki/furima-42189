@@ -82,11 +82,10 @@
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
-                  <%= item.name.present? ? item.name : "商品名" %>
+                  <%= item.name %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= item.price.present? ? item.price : "販売価格" %>円<br>
-                    <%= item.shipping_fee.present? ? item.shipping_fee.name : "配送料負担" %></span>
+                  <span><%= item.price%>円<br><%= item.shipping_fee.name %></span>
                   <div class='star-btn'>
                     <%= image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
