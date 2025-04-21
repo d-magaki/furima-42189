@@ -1,8 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
+
   belongs_to :user
-  # has_one :order
   has_one_attached :image
 
   belongs_to :category
@@ -28,9 +27,6 @@ class Item < ApplicationRecord
     validates :shipping_day_id
   end
 
-  # Price full-width character validation (先に評価)
-  # validate :price_must_be_half_width
-
   # Price validation
   validates :price, numericality: {
     only_integer: true,
@@ -38,4 +34,8 @@ class Item < ApplicationRecord
     less_than_or_equal_to: 9_999_999,
     message: "Price must be between ¥300 and ¥9,999,999"
   }
+
+  def sold_out?
+    false
+  end
 end
