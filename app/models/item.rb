@@ -35,7 +35,4 @@ class Item < ApplicationRecord
     message: "Price must be between ¥300 and ¥9,999,999"
   }
 
-  def sold_out?
-    false
-  end
 end
