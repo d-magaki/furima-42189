@@ -26,17 +26,19 @@
     </div>
 
     <%# ログイン状態且つ、自身が出品した販売中商品の場合のみ、「商品の編集」「削除」ボタンを表示 %>
-    <% if user_signed_in? && current_user == @item.user && !@item.sold_out? %>
-      <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", "#", data: { turbo_method: :delete }, class: "item-destroy" %>
+    <% if user_signed_in? %>
+      <% if current_user == @item.user %>
+        <% unless @item.sold_out? %>
+          <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+          <p class="or-text">or</p>
+          <%= link_to "削除", "#", data: { turbo_method: :delete }, class: "item-destroy" %>
+        <% end %>
+      <% else %>
+        <% unless @item.sold_out? %>
+          <%= link_to "購入画面に進む", "#", class:"item-red-btn" %>
+        <% end %>
+      <% end %>
     <% end %>
-
-    <%# ログイン状態且つ、自身が出品していない販売中商品の場合のみ、「購入画面に進む」ボタンを表示 %>
-    <% if user_signed_in? && current_user != @item.user && !@item.sold_out? %>
-      <%= link_to "購入画面に進む", "#", class:"item-red-btn" %>
-    <% end %>
-
     <%# ログイン状態でも売却済みの商品には「編集・削除・購入」ボタンを表示しない %>
     <%# ログアウト状態では、商品の販売状況に関係なく「編集・削除・購入」ボタンを表示しない %>
 
